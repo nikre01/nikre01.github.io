@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nikita Dhakar — Developer for Hire</title>
+<link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800;900&family=Satoshi:wght@300;400;500;700&family=Fira+Code:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0d0d14;
+  --paper: #f5f3ee;
+  --cream: #ede9e1;
+  --lime: #c8f135;
+  --coral: #ff5c35;
+  --sky: #3b82f6;
+  --muted: #8a8a9a;
+  --border: #e0ddd6;
+  --card-bg: #ffffff;
+  --radius: 16px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background: var(--paper); color: var(--ink); font-family: 'Satoshi', sans-serif; overflow-x: hidden; }
+.cur { width:10px;height:10px;background:var(--coral);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;transition:transform .1s; }
+.cur-r { width:32px;height:32px;border:1.5px solid var(--coral);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9998;transition:width .2s,height .2s; }
+nav { position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 6%;display:flex;justify-content:space-between;align-items:center;background:rgba(245,243,238,0.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--border); }
+.logo { font-family:'Cabinet Grotesk',sans-serif;font-weight:900;font-size:1.1rem;display:flex;align-items:center;gap:8px; }
+.logo-dot { width:8px;height:8px;background:var(--coral);border-radius:50%;animation:blink 2s infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+.nav-links { display:flex;gap:28px;list-style:none; }
+.nav-links a { color:var(--muted);text-decoration:none;font-size:0.82rem;font-weight:500;transition:color .2s; }
+.nav-links a:hover { color:var(--ink); }
+.nav-cta { padding:10px 22px;background:var(--ink);color:var(--paper);border-radius:100px;font-size:0.8rem;font-weight:600;text-decoration:none;transition:background .2s; }
+.nav-cta:hover { background:var(--coral); }
+.hero { min-height:100vh;padding:120px 6% 80px;display:grid;align-items:center;position:relative;overflow:hidden; }
+.hero-bg-text { position:absolute;bottom:-30px;left:-20px;font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(100px,18vw,220px);font-weight:900;line-height:1;color:rgba(0,0,0,0.04);pointer-events:none;user-select:none;white-space:nowrap; }
+.hero-inner { display:grid;grid-template-columns:1fr auto;gap:60px;align-items:center;position:relative;z-index:1; }
+.availability { display:inline-flex;align-items:center;gap:8px;background:var(--cream);border:1px solid var(--border);padding:8px 18px;border-radius:100px;font-size:0.72rem;font-weight:600;color:#3a7a3a;margin-bottom:28px;letter-spacing:0.03em; }
+.availability::before { content:'';width:7px;height:7px;background:#4caf50;border-radius:50%;animation:blink 1.5s infinite; }
+h1 { font-family:'Cabinet Grotesk',sans-serif;font-weight:900;line-height:1;font-size:clamp(3rem,7vw,6.5rem);letter-spacing:-0.04em;margin-bottom:20px; }
+h1 .line2 { display:block;color:transparent;-webkit-text-stroke:2px var(--ink); }
+h1 .accent { color:var(--coral);-webkit-text-stroke:0; }
+.hero-desc { font-size:clamp(1rem,1.5vw,1.15rem);color:var(--muted);line-height:1.7;max-width:500px;margin-bottom:36px; }
+.hero-btns { display:flex;gap:14px;flex-wrap:wrap; }
+.btn-dark { padding:14px 32px;background:var(--ink);color:var(--paper);border-radius:100px;font-size:0.85rem;font-weight:700;text-decoration:none;transition:transform .2s,background .2s;display:inline-flex;align-items:center;gap:8px; }
+.btn-dark:hover { background:var(--coral);transform:translateY(-2px); }
+.btn-light { padding:14px 32px;background:transparent;color:var(--ink);border:2px solid var(--ink);border-radius:100px;font-size:0.85rem;font-weight:700;text-decoration:none;transition:all .2s; }
+.btn-light:hover { background:var(--ink);color:var(--paper); }
+.hero-card { background:var(--ink);color:var(--paper);border-radius:24px;padding:32px 28px;min-width:240px;flex-shrink:0; }
+.hero-card-name { font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:1.2rem;margin-bottom:4px; }
+.hero-card-role { font-size:0.75rem;color:rgba(255,255,255,0.5);margin-bottom:24px; }
+.hero-card-stats { display:flex;flex-direction:column;gap:16px; }
+.hstat-label { font-size:0.65rem;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.1em; }
+.hstat-val { font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:2rem;color:var(--lime);line-height:1; }
+.hstat-sub { font-size:0.7rem;color:rgba(255,255,255,0.4);margin-top:2px; }
+.marquee-wrap { border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden;padding:18px 0;background:var(--cream); }
+.marquee-track { display:flex;animation:marquee 25s linear infinite;white-space:nowrap; }
+.marquee-item { padding:0 40px;font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:0.85rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em;flex-shrink:0; }
+.marquee-item span { color:var(--coral);margin:0 8px; }
+@keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+section { padding:100px 6%; }
+.section-header { display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:60px;flex-wrap:wrap;gap:20px; }
+.section-no { font-family:'Fira Code',monospace;font-size:0.72rem;color:var(--coral);letter-spacing:0.1em;margin-bottom:8px; }
+.section-title { font-family:'Cabinet Grotesk',sans-serif;font-weight:900;font-size:clamp(2rem,4.5vw,3.5rem);letter-spacing:-0.03em;line-height:1.1; }
+.services { background:var(--ink);color:var(--paper); }
+.services .section-no { color:var(--lime); }
+.services .section-title { color:var(--paper); }
+.services-grid { display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2px; }
+.service-card { background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:var(--radius);padding:36px;transition:background .25s,transform .25s; }
+.service-card:hover { background:rgba(255,255,255,0.08);transform:translateY(-4px); }
+.service-icon { font-size:2rem;margin-bottom:20px; }
+.service-name { font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:1.1rem;margin-bottom:10px; }
+.service-desc { font-size:0.82rem;color:rgba(255,255,255,0.5);line-height:1.7;margin-bottom:20px; }
+.service-tags { display:flex;flex-wrap:wrap;gap:6px; }
+.stag { background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);padding:4px 12px;border-radius:100px;font-size:0.68rem;color:rgba(255,255,255,0.6);font-family:'Fira Code',monospace; }
+.stag:hover { background:var(--lime);color:var(--ink);border-color:var(--lime); }
+.projects-section { background:var(--paper); }
+.projects-list { display:flex;flex-direction:column;gap:2px; }
+.proj-item { background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:40px;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:start;transition:box-shadow .2s,transform .2s; }
+.proj-item:hover { box-shadow:0 12px 40px rgba(0,0,0,0.08);transform:translateY(-2px); }
+.proj-num { font-family:'Fira Code',monospace;font-size:0.7rem;color:var(--muted);margin-bottom:10px; }
+.proj-title { font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:1.4rem;letter-spacing:-0.02em;margin-bottom:12px; }
+.proj-desc { font-size:0.83rem;color:var(--muted);line-height:1.75;margin-bottom:20px;max-width:600px; }
+.proj-highlights { display:flex;flex-direction:column;gap:6px;margin-bottom:24px; }
+.proj-highlight { font-size:0.8rem;color:var(--ink);display:flex;gap:10px;align-items:baseline; }
+.proj-highlight::before { content:'→';color:var(--coral);flex-shrink:0; }
+.proj-tech { display:flex;flex-wrap:wrap;gap:8px; }
+.tech-pill { background:var(--cream);border:1px solid var(--border);padding:5px 14px;border-radius:100px;font-size:0.7rem;font-family:'Fira Code',monospace;color:var(--ink);font-weight:500; }
+.proj-links { display:flex;flex-direction:column;gap:10px;align-items:flex-end; }
+.proj-link { display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border-radius:100px;font-size:0.75rem;font-weight:700;text-decoration:none;transition:all .2s; }
+.proj-link-gh { background:var(--ink);color:var(--paper); }
+.proj-link-gh:hover { background:var(--coral); }
+.proj-badge { background:var(--lime);color:var(--ink);padding:4px 12px;border-radius:100px;font-size:0.65rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase; }
+.experience-section { background:var(--cream); }
+.exp-card { background:var(--card-bg);border:1px solid var(--border);border-radius:24px;padding:48px;max-width:780px;position:relative;overflow:hidden; }
+.exp-accent { position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--coral),var(--sky)); }
+.exp-header { display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:28px;gap:20px;flex-wrap:wrap; }
+.exp-co { font-family:'Cabinet Grotesk',sans-serif;font-weight:900;font-size:1.5rem; }
+.exp-role { color:var(--muted);font-size:0.82rem;margin-top:4px; }
+.exp-date { background:var(--cream);border:1px solid var(--border);padding:6px 16px;border-radius:100px;font-size:0.72rem;font-weight:600;white-space:nowrap; }
+.exp-pts { list-style:none;display:flex;flex-direction:column;gap:14px; }
+.exp-pts li { font-size:0.83rem;color:var(--muted);line-height:1.75;padding-left:22px;position:relative; }
+.exp-pts li::before { content:'▸';position:absolute;left:0;color:var(--coral); }
+.skills-section { background:var(--paper); }
+.skills-bento { display:grid;grid-template-columns:repeat(3,1fr);gap:16px; }
+.skill-block { background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:28px;transition:border-color .2s,transform .2s; }
+.skill-block:hover { border-color:var(--coral);transform:translateY(-3px); }
+.skill-block:nth-child(1) { grid-column:span 2; }
+.skill-block-label { font-family:'Fira Code',monospace;font-size:0.65rem;color:var(--coral);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:14px; }
+.skill-chips { display:flex;flex-wrap:wrap;gap:8px; }
+.chip { padding:6px 16px;border-radius:100px;font-size:0.75rem;font-weight:600;border:1.5px solid var(--border);background:var(--paper);transition:all .2s; }
+.chip:hover { background:var(--ink);color:var(--paper);border-color:var(--ink); }
+.chip.hot { background:var(--coral);color:#fff;border-color:var(--coral); }
+.chip.strong { background:var(--ink);color:var(--paper);border-color:var(--ink); }
+.edu-section { background:var(--cream); }
+.edu-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:16px; }
+.edu-card { background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:28px;transition:all .2s; }
+.edu-card:hover { border-color:var(--sky);transform:translateY(-3px); }
+.edu-emoji { font-size:2rem;margin-bottom:14px; }
+.edu-deg { font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:0.95rem;margin-bottom:6px;line-height:1.3; }
+.edu-school { font-size:0.75rem;color:var(--muted);margin-bottom:14px;line-height:1.5; }
+.edu-foot { display:flex;justify-content:space-between;align-items:center; }
+.edu-yr { font-size:0.7rem;color:var(--muted); }
+.edu-grade { background:var(--ink);color:var(--lime);padding:3px 12px;border-radius:100px;font-size:0.68rem;font-weight:700; }
+.cta-section { background:var(--ink);color:var(--paper);text-align:center;padding:120px 6%; }
+.cta-tag { display:inline-block;background:rgba(200,241,53,0.15);border:1px solid rgba(200,241,53,0.3);color:var(--lime);padding:6px 18px;border-radius:100px;font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:24px; }
+.cta-title { font-family:'Cabinet Grotesk',sans-serif;font-weight:900;font-size:clamp(2.5rem,6vw,5rem);letter-spacing:-0.04em;margin-bottom:16px; }
+.cta-title em { font-style:normal;color:var(--coral); }
+.cta-sub { color:rgba(255,255,255,0.5);font-size:1.05rem;margin-bottom:48px; }
+.cta-links { display:flex;gap:16px;justify-content:center;flex-wrap:wrap; }
+.cta-link { display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:100px;font-size:0.85rem;font-weight:700;text-decoration:none;transition:all .2s; }
+.cta-link-primary { background:var(--lime);color:var(--ink); }
+.cta-link-primary:hover { background:#fff;transform:translateY(-2px); }
+.cta-link-secondary { border:1.5px solid rgba(255,255,255,0.2);color:var(--paper); }
+.cta-link-secondary:hover { border-color:var(--paper);background:rgba(255,255,255,0.05); }
+.contact-detail { color:rgba(255,255,255,0.35);font-size:0.78rem;margin-top:32px;font-family:'Fira Code',monospace; }
+.contact-detail a { color:rgba(255,255,255,0.6);text-decoration:none; }
+.contact-detail a:hover { color:var(--lime); }
+footer { padding:24px 6%;background:var(--cream);display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);flex-wrap:wrap;gap:12px;font-size:0.72rem;color:var(--muted); }
+footer a { color:var(--coral);text-decoration:none; }
+.reveal { opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease; }
+.reveal.on { opacity:1;transform:translateY(0); }
+@media(max-width:900px) {
+  .hero-inner { grid-template-columns:1fr; }
+  .hero-card { display:none; }
+  .skills-bento { grid-template-columns:1fr 1fr; }
+  .skill-block:nth-child(1) { grid-column:span 2; }
+  .edu-grid { grid-template-columns:1fr 1fr; }
+  .proj-item { grid-template-columns:1fr; }
+  .proj-links { flex-direction:row; }
+}
+@media(max-width:600px) {
+  .nav-links { display:none; }
+  .skills-bento,.edu-grid { grid-template-columns:1fr; }
+  .skill-block:nth-child(1) { grid-column:span 1; }
+  h1 { font-size:2.8rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="cur" id="c"></div>
+<div class="cur-r" id="cr"></div>
+
+<nav>
+  <div class="logo"><div class="logo-dot"></div> Nikita Dhakar</div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="mailto:nikitadhakar19@gmail.com" class="nav-cta">Hire Me →</a>
+</nav>
+
+<section class="hero" id="home">
+  <div class="hero-bg-text">DEVELOPER</div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="availability">● Open to Freelance &amp; Internships</div>
+      <h1>Full-Stack<br><span class="line2">&amp; AI</span><span class="accent"> Developer</span></h1>
+      <p class="hero-desc">Final-year CS student from Indore building <strong>AI-powered tools</strong>, cloud-deployed platforms, and full-stack apps. Available for freelance projects, internships &amp; collaborations.</p>
+      <div class="hero-btns">
+        <a href="#projects" class="btn-dark">See My Work ↓</a>
+        <a href="mailto:nikitadhakar19@gmail.com" class="btn-light">Let's Talk</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-name">Nikita Dhakar</div>
+      <div class="hero-card-role">Developer · Indore, India</div>
+      <div class="hero-card-stats">
+        <div><div class="hstat-label">CGPA</div><div class="hstat-val">7.67</div><div class="hstat-sub">IPS Academy, 2026</div></div>
+        <div><div class="hstat-label">GitHub Repos</div><div class="hstat-val">6</div><div class="hstat-sub">nikre01</div></div>
+        <div><div class="hstat-label">Focus Areas</div><div class="hstat-val" style="font-size:1rem;line-height:1.4;color:#fff">AI/ML · FullStack · Java</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="marquee-item">Python<span>✦</span></span><span class="marquee-item">Java<span>✦</span></span><span class="marquee-item">React<span>✦</span></span><span class="marquee-item">AI/ML<span>✦</span></span><span class="marquee-item">Node.js<span>✦</span></span><span class="marquee-item">Docker<span>✦</span></span><span class="marquee-item">AWS<span>✦</span></span><span class="marquee-item">MongoDB<span>✦</span></span><span class="marquee-item">REST APIs<span>✦</span></span><span class="marquee-item">Streamlit<span>✦</span></span><span class="marquee-item">Python<span>✦</span></span><span class="marquee-item">Java<span>✦</span></span><span class="marquee-item">React<span>✦</span></span><span class="marquee-item">AI/ML<span>✦</span></span><span class="marquee-item">Node.js<span>✦</span></span><span class="marquee-item">Docker<span>✦</span></span><span class="marquee-item">AWS<span>✦</span></span><span class="marquee-item">MongoDB<span>✦</span></span><span class="marquee-item">REST APIs<span>✦</span></span><span class="marquee-item">Streamlit<span>✦</span></span>
+  </div>
+</div>
+
+<section class="services" id="services">
+  <div class="section-header">
+    <div><div class="section-no">// 01 — What I Build</div><div class="section-title">Services I Offer</div></div>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal"><div class="service-icon">🤖</div><div class="service-name">AI-Powered Applications</div><div class="service-desc">Build intelligent tools with document analysis, OCR, NLP, and ML-based decision systems. From fraud detection to automation pipelines.</div><div class="service-tags"><span class="stag">Python</span><span class="stag">OCR</span><span class="stag">PyMuPDF</span><span class="stag">Streamlit</span><span class="stag">Generative AI</span></div></div>
+    <div class="service-card reveal"><div class="service-icon">🌐</div><div class="service-name">Full-Stack Web Development</div><div class="service-desc">End-to-end web applications with React frontends, Node.js backends, REST APIs, and secure authentication systems.</div><div class="service-tags"><span class="stag">React</span><span class="stag">Node.js</span><span class="stag">HTML/CSS</span><span class="stag">MongoDB</span><span class="stag">JWT/OAuth</span></div></div>
+    <div class="service-card reveal"><div class="service-icon">☕</div><div class="service-name">Java Application Development</div><div class="service-desc">Desktop apps, management systems, simulators built with clean OOP architecture.</div><div class="service-tags"><span class="stag">Java</span><span class="stag">OOP</span><span class="stag">MySQL</span><span class="stag">IntelliJ</span></div></div>
+    <div class="service-card reveal"><div class="service-icon">☁️</div><div class="service-name">Cloud &amp; Backend APIs</div><div class="service-desc">Deploy scalable microservices on AWS with Docker, build REST APIs for real-time monitoring and data-heavy platforms.</div><div class="service-tags"><span class="stag">AWS</span><span class="stag">Docker</span><span class="stag">REST APIs</span><span class="stag">MongoDB</span></div></div>
+  </div>
+</section>
+
+<section class="projects-section" id="projects">
+  <div class="section-header reveal">
+    <div><div class="section-no">// 02 — Work</div><div class="section-title">Featured Projects</div></div>
+    <a href="https://github.com/nikre01" target="_blank" class="btn-dark" style="flex-shrink:0">GitHub ↗</a>
+  </div>
+  <div class="projects-list">
+    <div class="proj-item reveal">
+      <div>
+        <div class="proj-num">01 / Python · AI · Streamlit</div>
+        <div class="proj-title">AI Fake Certificate &amp; Document Verification System</div>
+        <div class="proj-desc">Built to solve academic fraud in colleges — students submitting forged certificates in placements and scholarships. This AI-powered tool detects fakes using 9-layer forensic analysis.</div>
+        <div class="proj-highlights">
+          <div class="proj-highlight">9-layer forensic engine: PDF metadata, OCR, fuzzy tracing, blacklists</div>
+          <div class="proj-highlight">20+ verified org database (TCS, AWS, Google, NPTEL, IBM, Cisco…)</div>
+          <div class="proj-highlight">15+ blacklisted fake certificate providers flagged automatically</div>
+          <div class="proj-highlight">User auth (SHA-256), scan history dashboard, animated robot UI</div>
+          <div class="proj-highlight">Authenticity score 0–98% with detailed audit trail</div>
+        </div>
+        <div class="proj-tech"><span class="tech-pill">Python</span><span class="tech-pill">Streamlit</span><span class="tech-pill">Tesseract OCR</span><span class="tech-pill">PyMuPDF</span><span class="tech-pill">RapidFuzz</span><span class="tech-pill">SQLite</span></div>
+      </div>
+      <div class="proj-links"><span class="proj-badge">AI Project</span><a href="https://github.com/nikre01/Document-Verify" target="_blank" class="proj-link proj-link-gh">GitHub ↗</a></div>
+    </div>
+    <div class="proj-item reveal">
+      <div>
+        <div class="proj-num">02 / Java · Cloud · Microservices</div>
+        <div class="proj-title">Reward-Based Crowd Funding Platform</div>
+        <div class="proj-desc">A cloud-based platform that incentivizes users by rewarding them for contributing computing resources — deployed on AWS with microservices architecture.</div>
+        <div class="proj-highlights">
+          <div class="proj-highlight">Secure JWT/OAuth auth + role-based access control</div>
+          <div class="proj-highlight">REST APIs for reward allocation &amp; real-time usage monitoring</div>
+          <div class="proj-highlight">MongoDB for scalable user activity &amp; rewards data management</div>
+          <div class="proj-highlight">Docker-based microservices on AWS — high availability deployment</div>
+        </div>
+        <div class="proj-tech"><span class="tech-pill">Java</span><span class="tech-pill">MongoDB</span><span class="tech-pill">AWS</span><span class="tech-pill">Docker</span><span class="tech-pill">JWT/OAuth</span><span class="tech-pill">REST APIs</span></div>
+      </div>
+      <div class="proj-links"><span class="proj-badge">Cloud Project</span><a href="https://github.com/nikre01/Reward_Based_Crowdfund_Platform" target="_blank" class="proj-link proj-link-gh">GitHub ↗</a></div>
+    </div>
+    <div class="proj-item reveal">
+      <div>
+        <div class="proj-num">03 / Java · FinTech · Simulation</div>
+        <div class="proj-title">UPI Payment Simulator</div>
+        <div class="proj-desc">A Java-based UPI payment flow simulator replicating real-world digital payment architecture.</div>
+        <div class="proj-highlights">
+          <div class="proj-highlight">Simulates UPI payment flow end-to-end</div>
+          <div class="proj-highlight">Clean OOP architecture with modular design</div>
+        </div>
+        <div class="proj-tech"><span class="tech-pill">Java</span><span class="tech-pill">OOP</span><span class="tech-pill">IntelliJ IDEA</span></div>
+      </div>
+      <div class="proj-links"><span class="proj-badge">FinTech</span><a href="https://github.com/nikre01/UPI-Payment-Simulator" target="_blank" class="proj-link proj-link-gh">GitHub ↗</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="experience-section" id="experience">
+  <div class="section-header reveal">
+    <div><div class="section-no">// 03 — Experience</div><div class="section-title">Where I've Worked</div></div>
+  </div>
+  <div class="exp-card reveal">
+    <div class="exp-accent"></div>
+    <div class="exp-header">
+      <div><div class="exp-co">Brainwave Matrix Solution</div><div class="exp-role">Software Development Intern</div></div>
+      <div class="exp-date">May 2025 – June 2025</div>
+    </div>
+    <ul class="exp-pts">
+      <li>Built a fully functional ATM Interface in Java — balance inquiry, withdrawal, deposit, and transaction history modules.</li>
+      <li>Developed a Hospital Management System covering patient registration, billing, staff management, and inventory control.</li>
+      <li>Strengthened OOP concepts: inheritance, encapsulation, polymorphism, and abstraction through production-level code.</li>
+      <li>Followed Java best practices for modular design, exception handling, and clean UI development.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="skills-section" id="skills">
+  <div class="section-header reveal">
+    <div><div class="section-no">// 04 — Skills</div><div class="section-title">Tech Arsenal</div></div>
+  </div>
+  <div class="skills-bento">
+    <div class="skill-block reveal"><div class="skill-block-label">Core Languages</div><div class="skill-chips"><span class="chip strong">Python</span><span class="chip strong">Java</span><span class="chip">JavaScript</span><span class="chip">SQL</span></div></div>
+    <div class="skill-block reveal"><div class="skill-block-label">AI / Automation</div><div class="skill-chips"><span class="chip hot">Generative AI</span><span class="chip">OCR (Tesseract)</span><span class="chip">PyMuPDF</span><span class="chip">RapidFuzz</span><span class="chip">REST APIs</span></div></div>
+    <div class="skill-block reveal"><div class="skill-block-label">Web &amp; Frameworks</div><div class="skill-chips"><span class="chip">React</span><span class="chip">Node.js</span><span class="chip">Streamlit</span><span class="chip">HTML5</span><span class="chip">CSS3</span></div></div>
+    <div class="skill-block reveal"><div class="skill-block-label">Cloud &amp; DevOps</div><div class="skill-chips"><span class="chip strong">AWS</span><span class="chip strong">Docker</span><span class="chip">Git / GitHub</span><span class="chip">JWT/OAuth</span></div></div>
+    <div class="skill-block reveal"><div class="skill-block-label">Databases</div><div class="skill-chips"><span class="chip">MongoDB</span><span class="chip">MySQL</span><span class="chip">SQLite</span></div></div>
+    <div class="skill-block reveal"><div class="skill-block-label">Soft Skills</div><div class="skill-chips"><span class="chip">Leadership</span><span class="chip">Problem Solving</span><span class="chip">Team Work</span><span class="chip">Adaptability</span></div></div>
+  </div>
+</section>
+
+<section class="edu-section" id="education">
+  <div class="section-header reveal">
+    <div><div class="section-no">// 05 — Education</div><div class="section-title">Academic Background</div></div>
+  </div>
+  <div class="edu-grid">
+    <div class="edu-card reveal"><div class="edu-emoji">🎓</div><div class="edu-deg">B.Tech — Computer Science</div><div class="edu-school">IPS Academy, Institute of Engineering &amp; Science, Indore (M.P.)</div><div class="edu-foot"><span class="edu-yr">2022 – 2026</span><span class="edu-grade">CGPA 7.67</span></div></div>
+    <div class="edu-card reveal"><div class="edu-emoji">📘</div><div class="edu-deg">Higher Secondary (XII)</div><div class="edu-school">Abhinav Higher Secondary School, Indore</div><div class="edu-foot"><span class="edu-yr">2022</span><span class="edu-grade">71%</span></div></div>
+    <div class="edu-card reveal"><div class="edu-emoji">🏫</div><div class="edu-deg">Secondary (X)</div><div class="edu-school">Abhinav Higher Secondary School, Indore</div><div class="edu-foot"><span class="edu-yr">2020</span><span class="edu-grade">80%</span></div></div>
+  </div>
+</section>
+
+<section class="cta-section" id="contact">
+  <div class="cta-tag">✦ Available Now</div>
+  <div class="cta-title">Got a project in<br><em>mind?</em></div>
+  <div class="cta-sub">Let's build something great together.</div>
+  <div class="cta-links">
+    <a href="mailto:nikitadhakar19@gmail.com" class="cta-link cta-link-primary">✉ Email Me</a>
+    <a href="https://www.linkedin.com/in/nikita-dhakar-0858812aa/" target="_blank" class="cta-link cta-link-secondary">LinkedIn ↗</a>
+    <a href="https://github.com/nikre01" target="_blank" class="cta-link cta-link-secondary">GitHub ↗</a>
+  </div>
+  <div class="contact-detail">
+    📍 Vijaynagar, Indore &nbsp;|&nbsp;
+    📞 <a href="tel:+919630967876">+91 96309 67876</a> &nbsp;|&nbsp;
+    ✉ <a href="mailto:nikitadhakar19@gmail.com">nikitadhakar19@gmail.com</a>
+  </div>
+</section>
+
+<footer>
+  <span>© 2025 Nikita Dhakar &nbsp;·&nbsp; Made with ♥ from Indore 🇮🇳</span>
+  <span><a href="https://github.com/nikre01" target="_blank">github/nikre01</a></span>
+</footer>
+
+<script>
+// Keyboard fix — stops Claude parent intercepting keypresses
+(function(){
+  const s=function(e){e.stopPropagation();};
+  document.addEventListener('keydown',s,true);
+  document.addEventListener('keyup',s,true);
+  document.addEventListener('keypress',s,true);
+})();
+// Cursor
+const c=document.getElementById('c'),cr=document.getElementById('cr');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;c.style.transform=`translate(${mx-5}px,${my-5}px)`;});
+(function loop(){rx+=(mx-rx-16)*.12;ry+=(my-ry-16)*.12;cr.style.transform=`translate(${rx}px,${ry}px)`;requestAnimationFrame(loop);})();
+document.querySelectorAll('a,button,.proj-item,.service-card,.edu-card,.skill-block').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cr.style.width='56px';cr.style.height='56px';});
+  el.addEventListener('mouseleave',()=>{cr.style.width='32px';cr.style.height='32px';});
+});
+// Scroll reveal
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach((e,i)=>{if(e.isIntersecting)setTimeout(()=>e.target.classList.add('on'),i*70);});
+},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
