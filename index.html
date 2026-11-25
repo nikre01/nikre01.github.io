@@ -25,7 +25,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@1,500;1,600&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/style.css?v=2.2">
+  <link rel="stylesheet" href="css/style.css?v=2.3">
 </head>
 <body class="theme-obsidian">
 
@@ -76,7 +76,7 @@
       <a href="#pipeline" class="m-link">Architecture</a>
       <a href="#experience" class="m-link">Experience</a>
       <a href="#skills" class="m-link">Skills</a>
-      <a href="#contact" class="m-link">Contact</a>
+      <a href="#contact" class="m-link" >Contact</a>
     </div>
   </header>
 
@@ -146,15 +146,22 @@
             <div class="avatar-center-stage">
               <div class="avatar-warm-sunburst"></div>
               
-              <!-- Female Developer Persona Card (Removed "ready for role" badge, Female Illustration) -->
-              <div class="dev-persona-card">
+              <!-- Live Interactive Speech Bubble ("Hi, I'm Nikita") -->
+              <div class="avatar-live-bubble" id="avatarLiveBubble" title="Click to greet Nikita!">
+                <span class="live-bubble-indicator"></span>
+                <span class="live-bubble-text">Hi, I'm Nikita <span class="hand-wave-anim">👋</span></span>
+                <div class="live-bubble-tail"></div>
+              </div>
+
+              <!-- Female Developer Persona Card -->
+              <div class="dev-persona-card" id="devPersonaCard" title="Click to hear Nikita!">
                 <div class="persona-illustration">
                   <svg viewBox="0 0 200 220" class="dev-svg-graphic" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <!-- Background Soft Aura -->
                     <circle cx="100" cy="100" r="85" fill="url(#avatarGlow)" opacity="0.6"/>
 
                     <!-- Back Hair (Long, flowing feminine hairstyle) -->
-                    <path d="M50 85C50 145 62 185 70 205H130C138 185 150 145 150 85C150 45 130 30 100 30C70 30 50 45 50 85Z" fill="#1e1822"/>
+                    <path class="hair-sway" d="M50 85C50 145 62 185 70 205H130C138 185 150 145 150 85C150 45 130 30 100 30C70 30 50 45 50 85Z" fill="#1e1822"/>
 
                     <!-- Stylish Jacket / Top (Warm Coral / Sunset tone) -->
                     <path d="M42 220C42 172 66 148 100 148C134 148 158 172 158 220H42Z" fill="url(#jacketGrad)"/>
@@ -169,7 +176,7 @@
                     <rect x="89" y="122" width="22" height="28" rx="6" fill="#fedcc2"/>
 
                     <!-- Face Contour -->
-                    <ellipse cx="100" cy="98" rx="34" ry="38" fill="#fedcc2"/>
+                    <ellipse class="head-bob" cx="100" cy="98" rx="34" ry="38" fill="#fedcc2"/>
 
                     <!-- Front Hair Framing & Bangs -->
                     <path d="M66 82C66 52 80 40 100 40C120 40 134 52 134 82C134 94 130 105 130 115C126 100 120 92 100 92C80 92 74 100 70 115C70 105 66 94 66 82Z" fill="#2b202c"/>
@@ -183,23 +190,30 @@
                     <path d="M79 86C83 83 88 83 92 85" stroke="#3a2a3c" stroke-width="2" stroke-linecap="round"/>
                     <path d="M108 85C112 83 117 83 121 86" stroke="#3a2a3c" stroke-width="2" stroke-linecap="round"/>
 
-                    <!-- Eyes with Lashes -->
-                    <ellipse cx="85" cy="94" rx="5" ry="6" fill="#1f2937"/>
-                    <ellipse cx="115" cy="94" rx="5" ry="6" fill="#1f2937"/>
-                    <circle cx="87" cy="92" r="2" fill="#ffffff"/>
-                    <circle cx="117" cy="92" r="2" fill="#ffffff"/>
-                    <!-- Eyelashes -->
-                    <path d="M80 91L77 88" stroke="#1f2937" stroke-width="1.5" stroke-linecap="round"/>
-                    <path d="M90 91L93 88" stroke="#1f2937" stroke-width="1.5" stroke-linecap="round"/>
-                    <path d="M110 91L107 88" stroke="#1f2937" stroke-width="1.5" stroke-linecap="round"/>
-                    <path d="M120 91L123 88" stroke="#1f2937" stroke-width="1.5" stroke-linecap="round"/>
+                    <!-- Eyes with Lashes & Interactive Blink Animation -->
+                    <g class="avatar-eyes-group">
+                      <!-- Left Eye -->
+                      <g class="avatar-eye eye-left">
+                        <ellipse cx="85" cy="94" rx="5" ry="6" fill="#1f2937"/>
+                        <circle cx="87" cy="92" r="2" fill="#ffffff"/>
+                        <path d="M80 91L77 88" stroke="#1f2937" stroke-width="1.5" stroke-linecap="round"/>
+                        <path d="M90 91L93 88" stroke="#1f2937" stroke-width="1.5" stroke-linecap="round"/>
+                      </g>
+                      <!-- Right Eye -->
+                      <g class="avatar-eye eye-right">
+                        <ellipse cx="115" cy="94" rx="5" ry="6" fill="#1f2937"/>
+                        <circle cx="117" cy="92" r="2" fill="#ffffff"/>
+                        <path d="M110 91L107 88" stroke="#1f2937" stroke-width="1.5" stroke-linecap="round"/>
+                        <path d="M120 91L123 88" stroke="#1f2937" stroke-width="1.5" stroke-linecap="round"/>
+                      </g>
+                    </g>
 
                     <!-- Soft Blush Cheeks -->
-                    <circle cx="77" cy="104" r="6" fill="#fca5a5" opacity="0.55"/>
-                    <circle cx="123" cy="104" r="6" fill="#fca5a5" opacity="0.55"/>
+                    <circle cx="77" cy="104" r="6" fill="#fca5a5" opacity="0.6"/>
+                    <circle cx="123" cy="104" r="6" fill="#fca5a5" opacity="0.6"/>
 
-                    <!-- Feminine Smile & Lips -->
-                    <path d="M92 112C96 118 104 118 108 112" stroke="#e11d48" stroke-width="2.5" stroke-linecap="round"/>
+                    <!-- Feminine Smile & Lips with Live Speak Pulse -->
+                    <path id="avatarSmilePath" class="avatar-mouth" d="M92 112C96 118 104 118 108 112" stroke="#e11d48" stroke-width="2.5" stroke-linecap="round"/>
 
                     <!-- Gradients -->
                     <defs>
@@ -217,7 +231,7 @@
 
                 <div class="persona-footer-strip">
                   <span class="persona-name">Nikita Dhakar</span>
-                  <span class="persona-score">Pune, Maharashtra • 8.00 CGPA</span>
+                  <span class="persona-role-pill">Software Developer</span>
                 </div>
               </div>
 
@@ -255,32 +269,7 @@
       </div>
     </section>
 
-    <!-- SOCIAL CHANNELS PILLS BAR (Location strictly Pune) -->
-    <section class="social-channels-bar">
-      <div class="site-container">
-        <div class="pills-flex-row">
-          <a href="https://github.com/nikre01" target="_blank" rel="noopener noreferrer" class="social-pill">
-            <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-            <span>GitHub (@nikre01)</span>
-          </a>
 
-          <a href="mailto:nikitadhakar19@gmail.com" class="social-pill">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
-            <span>nikitadhakar19@gmail.com</span>
-          </a>
-
-          <a href="tel:+919630967876" class="social-pill">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-            <span>+91 9630967876</span>
-          </a>
-
-          <div class="social-pill status-pill-active">
-            <span class="green-dot"></span>
-            <span>Pune, Maharashtra</span>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <!-- 2. FEATURED PROJECTS SHOWCASE -->
     <section id="projects" class="projects-section">
@@ -326,6 +315,10 @@
               </div>
 
               <div class="project-card-footer">
+                <button type="button" class="btn-card-live" id="btnLiveUpi">
+                  <span class="live-dot-pulse"></span>
+                  <span>Live Simulator</span>
+                </button>
                 <a href="https://github.com/nikre01/UPI-Payment-Simulator" target="_blank" rel="noopener noreferrer" class="btn-card-action">
                   <span>Source Code</span>
                   <span class="btn-arrow">→</span>
@@ -360,6 +353,10 @@
               </div>
 
               <div class="project-card-footer">
+                <button type="button" class="btn-card-live" id="btnLiveTraffic">
+                  <span class="live-dot-pulse"></span>
+                  <span>Live Predictor</span>
+                </button>
                 <a href="https://github.com/nikre01/AI-Smart-Traffic-Prediction-System" target="_blank" rel="noopener noreferrer" class="btn-card-action">
                   <span>Source Code</span>
                   <span class="btn-arrow">→</span>
@@ -429,6 +426,10 @@
               </div>
 
               <div class="project-card-footer">
+                <button type="button" class="btn-card-live" id="btnLivePlush">
+                  <span class="live-dot-pulse"></span>
+                  <span>Store Preview</span>
+                </button>
                 <a href="https://github.com/nikre01/plush-craft" target="_blank" rel="noopener noreferrer" class="btn-card-action">
                   <span>Source Code</span>
                   <span class="btn-arrow">→</span>
@@ -442,81 +443,120 @@
       </div>
     </section>
 
-    <!-- 3. INTERACTIVE WORKFLOW PIPELINE -->
+    <!-- 3. ADVANCED INTERACTIVE WORKFLOW PIPELINE & ARCHITECTURE CONSOLE -->
     <section id="pipeline" class="pipeline-section">
       <div class="site-container">
         
         <div class="section-lead-box">
           <div class="system-status-indicator">
             <span class="status-pulse-green"></span>
-            <span>all systems operational</span>
+            <span>JAVA CORE ARCHITECTURE & CONCURRENCY CONSOLE</span>
           </div>
           <h2 class="pipeline-heading">The backend handoffs <br><span class="italic-serif">run themselves.</span></h2>
           <p class="pipeline-sub">
-            How my Java transactional engine manages incoming payment requests, executes atomic balance mutations in MySQL, and guarantees zero double-spends.
+            How my transactional engine isolates thread execution, acquires pessimistic row locks in MySQL via HikariCP, and guarantees zero double-spend anomalies under high concurrency.
           </p>
         </div>
 
-        <!-- Node Graph Card -->
+        <!-- Advanced Telemetry Stats Bar -->
+        <div class="pipeline-telemetry-grid">
+          <div class="telemetry-card">
+            <span class="telemetry-label">TRANSACTION THROUGHPUT</span>
+            <span class="telemetry-value">1,420 <span class="telemetry-unit">TPS</span></span>
+            <span class="telemetry-status text-green">● Non-blocking I/O</span>
+          </div>
+          <div class="telemetry-card">
+            <span class="telemetry-label">P99 SETTLEMENT LATENCY</span>
+            <span class="telemetry-value">18.4 <span class="telemetry-unit">ms</span></span>
+            <span class="telemetry-status text-green">● SLA &lt; 50ms</span>
+          </div>
+          <div class="telemetry-card">
+            <span class="telemetry-label">HIKARICP POOL HEALTH</span>
+            <span class="telemetry-value">8 / 20 <span class="telemetry-unit">conn</span></span>
+            <span class="telemetry-status text-blue">● Zero Leakage</span>
+          </div>
+          <div class="telemetry-card">
+            <span class="telemetry-label">ISOLATION LEVEL</span>
+            <span class="telemetry-value">READ_COMMITTED</span>
+            <span class="telemetry-status text-coral">● Pessimistic Locking</span>
+          </div>
+        </div>
+
+        <!-- Node Graph Card with Scenario Switcher -->
         <div class="node-workflow-card">
           <div class="node-workflow-topbar">
-            <span class="flow-title">UPI Payment State Machine • Concurrent Thread Pool</span>
+            <div class="flow-scenario-tabs" id="scenarioTabs">
+              <button type="button" class="scenario-tab active" data-scenario="success">
+                <span>Scenario A:</span> Instant Settlement (₹1,200)
+              </button>
+              <button type="button" class="scenario-tab" data-scenario="rollback">
+                <span>Scenario B:</span> Insufficient Balance (₹85k)
+              </button>
+              <button type="button" class="scenario-tab" data-scenario="concurrency">
+                <span>Scenario C:</span> Race Condition (2 Threads)
+              </button>
+            </div>
+            
             <div class="flow-actions">
-              <button class="flow-run-btn" id="runPipelineDemoBtn">
+              <button type="button" class="flow-run-btn" id="runPipelineDemoBtn">
                 <svg viewBox="0 0 24 24" fill="currentColor" class="w-3.5 h-3.5"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-                <span>Trigger Simulation</span>
+                <span id="runBtnLabel">Execute Selected Scenario</span>
               </button>
             </div>
           </div>
 
-          <!-- Flow Diagram Nodes -->
-          <div class="pipeline-diagram">
+          <!-- Flow Diagram Nodes with Dynamic Badges -->
+          <div class="pipeline-diagram" id="pipelineDiagram">
             
             <div class="flow-node active" id="node1">
-              <span class="node-badge">HTTP 200 INGRESS</span>
-              <strong class="node-title">Payment Request</strong>
-              <span class="node-detail">₹1,200.00 • rahul@oksbi</span>
+              <div class="node-timing-tag" id="timeTag1">T + 0ms</div>
+              <span class="node-badge" id="nodeBadge1">HTTP 200 INGRESS</span>
+              <strong class="node-title" id="nodeTitle1">Payment Ingress</strong>
+              <span class="node-detail" id="nodeDetail1">₹1,200.00 • rahul@oksbi</span>
             </div>
 
-            <div class="flow-connector active">
+            <div class="flow-connector active" id="connector1">
               <div class="connector-line"></div>
-              <span class="connector-label">idempotent nonce</span>
+              <span class="connector-label" id="connLabel1">idempotent nonce</span>
             </div>
 
             <div class="flow-node active" id="node2">
-              <span class="node-badge">CONCURRENCY GATE</span>
-              <strong class="node-title">Pessimistic Row Lock</strong>
-              <span class="node-detail">Thread synchronized</span>
+              <div class="node-timing-tag" id="timeTag2">T + 5ms</div>
+              <span class="node-badge" id="nodeBadge2">CONCURRENCY GATE</span>
+              <strong class="node-title" id="nodeTitle2">Pessimistic Row Lock</strong>
+              <span class="node-detail" id="nodeDetail2">SELECT FOR UPDATE</span>
             </div>
 
-            <div class="flow-connector active">
+            <div class="flow-connector active" id="connector2">
               <div class="connector-line"></div>
-              <span class="connector-label">balance check</span>
+              <span class="connector-label" id="connLabel2">balance validation</span>
             </div>
 
             <div class="flow-node active" id="node3">
-              <span class="node-badge">MYSQL & JDBC</span>
-              <strong class="node-title">Atomic Debit / Credit</strong>
-              <span class="node-detail">Zero SQL Injection</span>
+              <div class="node-timing-tag" id="timeTag3">T + 12ms</div>
+              <span class="node-badge" id="nodeBadge3">MYSQL & JDBC</span>
+              <strong class="node-title" id="nodeTitle3">Atomic Mutation</strong>
+              <span class="node-detail" id="nodeDetail3">Debit ₹1.2k / Credit ₹1.2k</span>
             </div>
 
-            <div class="flow-connector active">
+            <div class="flow-connector active" id="connector3">
               <div class="connector-line"></div>
-              <span class="connector-label">2-phase commit</span>
+              <span class="connector-label" id="connLabel3">2-phase commit</span>
             </div>
 
             <div class="flow-node active" id="node4">
-              <span class="node-badge">LEDGER AUDIT</span>
-              <strong class="node-title">Immutable Receipt</strong>
-              <span class="node-detail">Status: SETTLED</span>
+              <div class="node-timing-tag" id="timeTag4">T + 18ms</div>
+              <span class="node-badge" id="nodeBadge4">LEDGER AUDIT</span>
+              <strong class="node-title" id="nodeTitle4">SHA-256 Receipt</strong>
+              <span class="node-detail" id="nodeDetail4">Status: SETTLED</span>
             </div>
 
           </div>
 
-          <!-- Live Log Drawer -->
+          <!-- Live Log Console Drawer -->
           <div class="pipeline-log-strip" id="pipelineLogOutput">
             <span class="log-cursor">&gt;</span>
-            <span class="log-text" id="pipelineLogText">JVM payment service initialized. Click "Trigger Simulation" to test atomic execution.</span>
+            <span class="log-text" id="pipelineLogText">JVM Spring Boot Service Initialized. Select a scenario above and click "Execute Selected Scenario".</span>
           </div>
 
         </div>
@@ -777,9 +817,223 @@
     </div>
   </footer>
 
+  <!-- ========================================================================== -->
+  <!-- LIVE PROJECT 1 MODAL: UPI PAYMENT SIMULATOR SANDBOX -->
+  <!-- ========================================================================== -->
+  <div class="interactive-modal-backdrop hidden" id="upiModal">
+    <div class="interactive-modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <span class="modal-badge-live">LIVE JAVA ENGINE</span>
+          <h3 class="modal-title">UPI Payment Gateway Simulator</h3>
+        </div>
+        <button type="button" class="modal-close-btn" id="closeUpiModal" aria-label="Close modal">×</button>
+      </div>
+
+      <div class="modal-body">
+        <p class="modal-desc">
+          Test real transactional logic running Spring Boot MVC principles: pessimistic row locks, idempotent check, and atomic balance debit/credit.
+        </p>
+
+        <form id="upiSimulatorForm" class="modal-sim-form">
+          <div class="form-row-grid">
+            <div class="form-field-group">
+              <label class="form-field-label">Sender UPI VPA</label>
+              <input type="text" id="simSenderVpa" class="sim-input" value="nikita@oksbi" required>
+            </div>
+            <div class="form-field-group">
+              <label class="form-field-label">Receiver UPI VPA</label>
+              <input type="text" id="simReceiverVpa" class="sim-input" value="merchant@paytm" required>
+            </div>
+          </div>
+
+          <div class="form-row-grid">
+            <div class="form-field-group">
+              <label class="form-field-label">Amount (INR ₹)</label>
+              <input type="number" id="simAmount" class="sim-input" value="1200" min="1" max="100000" required>
+            </div>
+            <div class="form-field-group">
+              <label class="form-field-label">Simulated Bank Core (CBS)</label>
+              <select id="simBank" class="sim-input">
+                <option value="SBI">State Bank of India (HikariCP Pool A)</option>
+                <option value="HDFC">HDFC Bank (NPCI Switch Fastlane)</option>
+                <option value="ICICI">ICICI Bank Core Gateway</option>
+              </select>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-execute-sim" id="btnSubmitUpiSim">
+            <span>Authorize & Execute Transfer</span>
+            <span class="btn-arrow">→</span>
+          </button>
+        </form>
+
+        <!-- Live Terminal Stream Output -->
+        <div class="sim-terminal-output" id="upiSimTerminal">
+          <div class="terminal-header">
+            <span class="terminal-dots"><span></span><span></span><span></span></span>
+            <span class="terminal-title">JVM Transactional Console (stdout)</span>
+          </div>
+          <pre class="terminal-code" id="upiSimLogText">// Ready for transaction. Click 'Authorize & Execute Transfer' above to run live simulation.</pre>
+        </div>
+
+        <!-- Success Receipt Container (Shown on completion) -->
+        <div class="sim-receipt-card hidden" id="upiReceiptCard">
+          <div class="receipt-icon-wrap">✓</div>
+          <h4 class="receipt-title">Transaction Successful</h4>
+          <div class="receipt-amount-display" id="receiptAmount">₹1,200.00</div>
+          <div class="receipt-details-grid">
+            <div><span>Status:</span> <strong class="text-green">SETTLED</strong></div>
+            <div><span>Reference ID:</span> <strong id="receiptTxnId">TXN-UPI-984210</strong></div>
+            <div><span>Sender:</span> <strong id="receiptSender">nikita@oksbi</strong></div>
+            <div><span>Receiver:</span> <strong id="receiptReceiver">merchant@paytm</strong></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================== -->
+  <!-- LIVE PROJECT 2 MODAL: AI SMART TRAFFIC PREDICTION SYSTEM -->
+  <!-- ========================================================================== -->
+  <div class="interactive-modal-backdrop hidden" id="trafficModal">
+    <div class="interactive-modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <span class="modal-badge-live">LIVE RULE ENGINE</span>
+          <h3 class="modal-title">AI Smart Traffic Prediction System</h3>
+        </div>
+        <button type="button" class="modal-close-btn" id="closeTrafficModal" aria-label="Close modal">×</button>
+      </div>
+
+      <div class="modal-body">
+        <p class="modal-desc">
+          Test Java algorithmic rule engine evaluating real-time vehicle densities, rush-hour factors, and weather multipliers to dynamically adapt traffic signal timings.
+        </p>
+
+        <div class="traffic-sim-controls">
+          <div class="control-row">
+            <div class="control-label-wrap">
+              <label for="densitySlider">Vehicle Density Rate:</label>
+              <span class="slider-display-val" id="densityValDisplay">180 vehicles / min</span>
+            </div>
+            <input type="range" id="densitySlider" class="sim-range-slider" min="20" max="300" value="180">
+          </div>
+
+          <div class="form-row-grid">
+            <div class="form-field-group">
+              <label class="form-field-label">Time of Day</label>
+              <select id="trafficTimeSelect" class="sim-input">
+                <option value="morning">Morning Rush Hour (08:30 - 10:30)</option>
+                <option value="afternoon">Mid-Day Normal Flow (12:00 - 15:30)</option>
+                <option value="evening" selected>Evening Peak Hour (17:30 - 20:30)</option>
+                <option value="night">Late Night Off-Peak (23:00 - 05:00)</option>
+              </select>
+            </div>
+            <div class="form-field-group">
+              <label class="form-field-label">Weather Condition</label>
+              <select id="trafficWeatherSelect" class="sim-input">
+                <option value="clear" selected>Clear Weather (1.0x factor)</option>
+                <option value="rain">Monsoon Downpour (1.45x slowdown)</option>
+                <option value="fog">Dense Fog / Low Visibility (1.30x factor)</option>
+              </select>
+            </div>
+          </div>
+
+          <button type="button" class="btn-execute-sim" id="btnCalculateTraffic">
+            <span>Calculate Congestion Score & Signal Timing</span>
+            <span class="btn-arrow">→</span>
+          </button>
+        </div>
+
+        <!-- Live Traffic Dashboard Results -->
+        <div class="traffic-results-box" id="trafficResultsBox">
+          <div class="traffic-light-graphic">
+            <div class="light-bulb red" id="lightRed"></div>
+            <div class="light-bulb yellow" id="lightYellow"></div>
+            <div class="light-bulb green active" id="lightGreen"></div>
+          </div>
+
+          <div class="traffic-metrics-col">
+            <div class="metric-row">
+              <span class="metric-name">Congestion Index:</span>
+              <span class="metric-highlight text-coral" id="congestionScoreDisplay">78% (HIGH CONGESTION)</span>
+            </div>
+            <div class="metric-row">
+              <span class="metric-name">Dynamic Green Signal Duration:</span>
+              <span class="metric-highlight text-green" id="signalTimingDisplay">75 Seconds (Extended)</span>
+            </div>
+            <div class="metric-row">
+              <span class="metric-name">Rule Engine Advisory:</span>
+              <span class="metric-highlight" id="trafficAdvisoryDisplay">Triggered bypass diversion onto Outer Bypass Lane</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================== -->
+  <!-- LIVE PROJECT 4 MODAL: PLUSH CRAFTS STUDIO STORE PREVIEW -->
+  <!-- ========================================================================== -->
+  <div class="interactive-modal-backdrop hidden" id="plushModal">
+    <div class="interactive-modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <span class="modal-badge-live">LIVE REACT E-COMMERCE</span>
+          <h3 class="modal-title">Plush Crafts Studio & The Crochet House</h3>
+        </div>
+        <button type="button" class="modal-close-btn" id="closePlushModal" aria-label="Close modal">×</button>
+      </div>
+
+      <div class="modal-body">
+        <p class="modal-desc">
+          Interactive preview of custom product configuration with real-time subtotal calculation and direct WhatsApp order payload formatting.
+        </p>
+
+        <div class="plush-preview-card">
+          <div class="plush-item-details">
+            <div class="plush-item-emoji">🧸</div>
+            <div>
+              <h4 class="plush-item-title">Handmade Velvet Amigurumi Bunny</h4>
+              <p class="plush-item-desc">Premium plush yarn, hypoallergenic stuffing, customizable ear ribbons.</p>
+              <div class="plush-price">₹849.00 <span class="plush-free-ship">Free Shipping in India</span></div>
+            </div>
+          </div>
+
+          <div class="form-row-grid mt-4">
+            <div class="form-field-group">
+              <label class="form-field-label">Custom Yarn Color</label>
+              <select id="plushColor" class="sim-input">
+                <option value="Blush Pink">Blush Pink & White</option>
+                <option value="Warm Latte">Warm Latte & Cream</option>
+                <option value="Pastel Lavender">Pastel Lavender</option>
+              </select>
+            </div>
+            <div class="form-field-group">
+              <label class="form-field-label">Quantity</label>
+              <input type="number" id="plushQty" class="sim-input" value="1" min="1" max="10">
+            </div>
+          </div>
+
+          <div class="cart-summary-strip">
+            <span>Total: <strong id="plushTotalDisplay">₹849.00</strong></span>
+            <button type="button" class="btn-whatsapp-order" id="btnPlushWhatsApp">
+              <span>Preview WhatsApp Order Payload</span>
+              <span>💬</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
   <!-- Toast Notification Box -->
   <div id="toastNotification" class="toast-card-box"></div>
 
-  <script src="js/main.js?v=2.2"></script>
+  <script src="js/main.js?v=2.3"></script>
 </body>
 </html>
