@@ -26,38 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // ==========================================================================
-  // 2. Live Bitmoji Greeting: "Hi, I'm Nikita"
-  // ==========================================================================
-  const avatarLiveBubble = document.getElementById('avatarLiveBubble');
-  const devPersonaCard = document.getElementById('devPersonaCard');
-
-  const speakGreeting = () => {
-    if (devPersonaCard) {
-      devPersonaCard.classList.add('speaking');
-      setTimeout(() => devPersonaCard.classList.remove('speaking'), 1800);
-    }
-
-    // Web Speech API for voice output
-    if ('speechSynthesis' in window) {
-      window.speechSynthesis.cancel(); // Reset any previous speech
-      const utterance = new SpeechSynthesisUtterance("Hi, I'm Nikita");
-      utterance.rate = 1.0;
-      utterance.pitch = 1.15; // friendly tone
-      window.speechSynthesis.speak(utterance);
-    }
-
-    showToast("Nikita: \"Hi, I'm Nikita 👋\"");
-  };
-
-  if (avatarLiveBubble) {
-    avatarLiveBubble.addEventListener('click', speakGreeting);
-  }
-  if (devPersonaCard) {
-    devPersonaCard.addEventListener('click', speakGreeting);
-  }
-
-  // ==========================================================================
-  // 3. Advanced Architecture & Concurrency Simulation (Section 3)
+  // 2. Advanced Architecture & Concurrency Simulation (Section 3)
   // ==========================================================================
   const runPipelineDemoBtn = document.getElementById('runPipelineDemoBtn');
   const runBtnLabel = document.getElementById('runBtnLabel');
